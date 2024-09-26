@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-pod
+spec:
+  containers:
+  - name: busybox-container
+    image: busybox:1.36
+    args: ["echo", "hello"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-pod
+spec:
+  containers:
+  - name: busybox-container
+    image: busybox:1.36
+    command: ["printenv"]
+    args: ["HOSTNAME", "KUBERNETES_PORT"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-pod
+spec:
+  containers:
+  - name: busybox-container
+    image: busybox:1.36
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo hello; sleep 5; done"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-pod
+spec:
+  containers:
+  - name: busybox-container
+    image: busybox:1.36
+    command: ["/bin/sh"]
+    args: ["-c", "sleep 100"]
